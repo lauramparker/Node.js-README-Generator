@@ -10,7 +10,7 @@ const writeFile = util.promisify(fs.writeFile);
 //functions
 //prompt the user to input needed information for README
 
-const userInput = () =>
+userInput = () =>
     inquirer.prompt([
         {
         type: 'input',
@@ -57,7 +57,7 @@ const userInput = () =>
 
 //put the vales fromt he user prompts into a template
 
-const createHTML = (response) =>
+createHTML = (response) => {
 `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,7 +83,7 @@ const createHTML = (response) =>
   </div>
 </div>
 </body>
-</html>`;
+</html>`};
 
 
 
@@ -91,6 +91,6 @@ const createHTML = (response) =>
 //events  - Write the template into a file   
 
 userInput()
-    .then((response) => fs.writeFile('index.html', createHTML(response)))
-    .then((response) => console.log(response.title, response.description, response.installation, response.usage, response.contribution))
-    .catch((error) => console.error(error));
+    .then((response) => writeFile('index.html', createHTML(response)))
+    .then(() => console.log("You generated a README"))
+    .catch((err) => console.error(err));
