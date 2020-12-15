@@ -12,23 +12,43 @@ const userInput = () =>
     inquirer.prompt([
         {
         type: 'input',
-        message: 'What is your name?',
-        name: 'name',
+        message: 'Enter the project title:',
+        name: 'title',
         },
         {
-        type: 'password',
-        message: 'What is your location?',
-        name: 'location',
+        type: 'input',
+        message: 'Enter a description of the project:',
+        name: 'description',
+        },
+        {
+        type: 'input',
+        message: 'Enter the installation instructions for the project:',
+        name: 'installation',
+        },
+        {
+        type: 'input',
+        message: 'Enter the usage information for this project:',
+        name: 'usage',
+        },
+        {
+        type: 'input',
+        message: 'Enter any contributors and guidelines for contributing to the project:',
+        name: 'contribution',
+        },
+        {
+        type: 'input',
+        message: 'Enter any test instructions for the project:',
+        name: 'testing',
         },
         {
         type: 'url',
-        message: 'Enter your github link',
+        message: 'What is the link to your github profile?',
         name: 'github',
         },
         {
         type: 'url',
-        message: 'Enter your linkedin link',
-        name: 'linkedin',
+        message: 'What is your email?',
+        name: 'email',
         },
     ]);
 
@@ -47,12 +67,12 @@ const createHTML = (response) =>
 <body>
   <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Hi! My name is ${response.name}</h1>
-    <p class="lead">I am from ${response.location}.</p>
-    <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
+    <h1 class="display-4">Project Title: ${response.title}</h1>
+    <p class="lead">Description: ${response.description}</p>
+    <h3>Example heading <span class="badge badge-secondary">Contact Info</span></h3>
     <ul class="list-group">
-      <li class="list-group-item">My GitHub username is ${response.github}</li>
-      <li class="list-group-item">LinkedIn: ${response.linkedin}</li>
+      <li class="list-group-item">My GitHub profile is ${response.github}</li>
+      <li class="list-group-item">Please contact me with questions: ${response.email}</li>
     </ul>
   </div>
 </div>
@@ -66,10 +86,10 @@ const createHTML = (response) =>
 
 userInput()
     .then((response) => console.log(response.name, response.location, response.github))
-    .then((response) => writeFile('index.html', createHTML(response)));
-    .then(()
-    fs.writeFile('text.html', response, (err)=> {
-    err ? console.error(err) : console.
+    .then((response) => writeFile('index.html', createHTML(response)))
+    .catch((error) => {
+        console.error(error);
+    })
 
     }
 );
