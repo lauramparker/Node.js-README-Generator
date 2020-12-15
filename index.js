@@ -1,9 +1,9 @@
 //variables
-const fs = require('fs');
 const inquirer = require('inquirer');
+const fs = require('fs');
 const util = require('util');
 
-const writeFile = util.promisify(fs.writefile);
+const writeFile = util.promisify(fs.writeFile);
 
 
 
@@ -69,6 +69,10 @@ const createHTML = (response) =>
   <div class="container">
     <h1 class="display-4">Project Title: ${response.title}</h1>
     <p class="lead">Description: ${response.description}</p>
+    <p class="lead">Description: ${response.installation}</p>
+    <p class="lead">Description: ${response.usage}</p>
+    <p class="lead">Description: ${response.contribution}</p>
+    <p class="lead">Description: ${response.testing}</p>
     <h3>Example heading <span class="badge badge-secondary">Contact Info</span></h3>
     <ul class="list-group">
       <li class="list-group-item">My GitHub profile is ${response.github}</li>
@@ -90,6 +94,3 @@ userInput()
     .catch((error) => {
         console.error(error);
     })
-
-    }
-);
