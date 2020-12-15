@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
 
-const writeFile = util.promisify(fs.writeFile);
+const writeFileAsync = util.promisify(fs.writeFile);
 
 
 
@@ -61,7 +61,7 @@ userInput = () =>
     ]);
 
 
-//put the vales fromt he user prompts into a template
+//put the vales from the user prompts into a template
 
 const createHTML = (response) => {
 `<!DOCTYPE html>
@@ -108,7 +108,8 @@ const createHTML = (response) => {
   </div>
 </div>
 </body>
-</html>`};
+</html>`
+};
 
 
 
@@ -116,6 +117,7 @@ const createHTML = (response) => {
 //events  - Write the template into a file   
 
 userInput()
-    .then((response) => writeFile('index.html', createHTML(response)))
-    .then(() => console.log("You generated a README"))
+    .then((response) => writeFileAsync('index.html', createHTML(response)))
+//  //   .then((response) => console.log(response.title, response.description, response.license)); //example test
     .catch((err) => console.error(err));
+
