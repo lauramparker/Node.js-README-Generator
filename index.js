@@ -43,12 +43,12 @@ const userInput = () =>
         name: 'testing',
         },
         {
-        type: 'url',
+        type: 'input',
         message: 'What is the link to your github profile?',
         name: 'github',
         },
         {
-        type: 'url',
+        type: 'input',
         message: 'What is your email?',
         name: 'email',
         },
