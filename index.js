@@ -57,7 +57,7 @@ userInput = () =>
 
 //put the vales fromt he user prompts into a template
 
-createHTML = (response) => {
+const createHTML = (response) => {
 `<!DOCTYPE html>
 <html lang="en">
 <head>
