@@ -43,12 +43,18 @@ userInput = () =>
         name: 'testing',
         },
         {
-        type: 'input',
+          type: 'list',
+          message: 'Select a license for this project:',
+          choices:['MIT', 'GPLv2', 'GPLv3', 'Apache', 'BSD 2-clause', 'BSD 3-clause'],
+          name: 'license',
+          },
+        {
+        type: 'url',
         message: 'What is the link to your github profile?',
         name: 'github',
         },
         {
-        type: 'input',
+        type: 'url',
         message: 'What is your email?',
         name: 'email',
         },
@@ -70,12 +76,31 @@ const createHTML = (response) => {
   <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Project Title: ${response.title}</h1>
-    <p class="lead">Description: ${response.description}</p>
-    <p class="lead">Description: ${response.installation}</p>
-    <p class="lead">Description: ${response.usage}</p>
-    <p class="lead">Description: ${response.contribution}</p>
-    <p class="lead">Description: ${response.testing}</p>
-    <h3>Example heading <span class="badge badge-secondary">Contact Info</span></h3>
+    <p><span class="badge badge-success">${response.license}</span></p>
+  <div class="dropdown-menu">
+    <h6 class="dropdown-header">Table of Contents</h6>
+    <a class="dropdown-item" href="#description">Description</a>
+    <a class="dropdown-item" href="#installation">Installation</a>
+    <a class="dropdown-item" href="#usage">Usage</a>
+    <a class="dropdown-item" href="#contributions">Contributions</a>
+    <a class="dropdown-item" href="#testing">Testing</a>
+    <a class="dropdown-item" href="#license">License</a>
+    <a class="dropdown-item" href="#questions">Questions</a>
+  </div>
+
+    <h3><a id="description"><u>Description</u></a></h3>
+    <p class="lead">${response.description}</p>
+    <h3><a id="installation"><u>Installation</u></a></h3>
+    <p class="lead">${response.installation}</p>
+    <h3><a id="usage"><u>Usage</u></a></h3>
+    <p class="lead">${response.usage}</p>
+    <h3><a id="contributions"><u>Contributions</u></a></h3>
+    <p class="lead">${response.contribution}</p>
+    <h3><a id="testing"><u>Testing</u></a></h3>
+    <p class="lead">${response.testing}</p>
+    <h3><a id="license"><u>License</u></a></h3>
+    <p class="lead">This project utilizes the following license: ${response.license}</p>
+    <h3><a id="questions"><u>Questions</u></a></h3>
     <ul class="list-group">
       <li class="list-group-item">My GitHub profile is ${response.github}</li>
       <li class="list-group-item">Please contact me with questions: ${response.email}</li>
