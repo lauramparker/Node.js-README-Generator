@@ -91,6 +91,6 @@ const createHTML = (response) =>
 //events  - Write the template into a file   
 
 userInput()
-    .then((response) => writeFile('index.html', createHTML(response)))
+    .then((response) => fs.writeFile('index.html', createHTML(response)))
     .then((response) => console.log(response.title, response.description, response.installation, response.usage, response.contribution))
     .catch((error) => console.error(error));
