@@ -17,11 +17,11 @@
    
 
 <p>
-    <img src="./images/createREADME.png" width="350" height="350" />
+    <img src="/assets/createREADME.png" width="350" height="350" />
 </p>
 
         
-<p> <img src="./images/createREADME (1).png" width="350" height="350" />
+<p> <img src="/assets/createREADME (1).png" width="350" height="350" />
 </p>
 
   
