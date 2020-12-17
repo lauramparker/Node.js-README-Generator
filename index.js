@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
 
-const writeFileAsync = util.promisify(fs.writeFile);
+const writeFile = util.promisify(fs.writeFile);
 
 
 
@@ -58,12 +58,16 @@ userInput = () =>
         message: 'What is your email?',
         name: 'email',
         },
-    ]);
+    ]).then(input => {
+      return input
+  })
+
+  
 
 
-//put the vales from the user prompts into a template
+//put the values from the user prompts into a template
 
-const createHTML = (response) => {
+const createHTML = (response) => 
 `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,15 +113,30 @@ const createHTML = (response) => {
 </div>
 </body>
 </html>`
-};
-
-
+;
 
 
 //events  - Write the template into a file   
 
 userInput()
-    .then((response) => writeFileAsync('index.html', createHTML(response)))
+    .then((response) => writeFile('index.html', createHTML(response)))
 //  //   .then((response) => console.log(response.title, response.description, response.license)); //example test
     .catch((err) => console.error(err));
+
+
+
+// async function init() {
+//   try {
+//     const answers = await userInput();
+//     const createReadMe = createHTML(answers);
+
+//     await writeFile('index.html', createReadMe);
+    
+//    // .catch((err) => console.error(err));
+//   } catch(err) {
+//     console.log(err);
+//   }
+// }
+
+// init();
 
